@@ -1,7 +1,25 @@
 redlock-cpp
 ===========
 
-C++实现redis分布式锁
+STEPS TO RUN:
+1. Start a redis server
+    `redis server`
+2. Open redis-cli to view
+    `redis-cli`
+3. Go to redlock-cpp-master/hiredis
+    `cd $/redlock-cpp-master/hiredis`
+    `make clean all`
+4. Go to redlock-cpp-master
+    `cd $/redlock-cpp-master`
+    `make all`
+5. Go to redlock-cpp-master/bin and link the hiredis
+    `ln -sfn ../hiredis/libhiredis.dylib $/redlock-cpp-master/bin/libhiredis.0.11.dylib`
+6. In bin run the LockExample
+    `./LockExample`
+7. This creates a "foo" entry in the redis cache with a unique id as value.
+   Check LockExample for code.
+
+C++ redis
 redlock-cpp - Redis distributed locks in C++
 
 Based on Redlock-rb by Salvatore Sanfilippo
@@ -30,9 +48,9 @@ The returned value is false if the lock was not acquired (you may try again), ot
 
     class CLock {
     public:
-        int m_validityTime; => 9897.3020019531 // 当前锁可以存活的时间, 毫秒
-        sds m_resource; => my_resource_name // 要锁住的资源名称
-        sds m_val; => 53771bfa1e775 // 锁住资源的进程随机名字
+        int m_validityTime; => 9897.3020019531 
+        sds m_resource; => my_resource_name
+        sds m_val; => 53771bfa1e775 
     };
 
 validity, an integer representing the number of milliseconds the lock will be valid.

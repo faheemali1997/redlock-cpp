@@ -12,7 +12,7 @@ HIREDIS_MAJOR=0
 HIREDIS_MINOR=11
 
 # redis-server configuration used for testing
-REDIS_PORT=56379
+REDIS_PORT=6379
 REDIS_SERVER=redis-server
 define REDIS_TEST_CONFIG
 	daemonize yes
